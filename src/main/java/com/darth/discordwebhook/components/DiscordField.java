@@ -3,9 +3,9 @@ package com.darth.discordwebhook.components;
 public class DiscordField {
 
 
-    private String name;
-    private String value;
-    private boolean inline;
+    private final String name;
+    private final String value;
+    private final boolean inline;
 
     public DiscordField(String name, String value, boolean inline) {
         this.name = name;

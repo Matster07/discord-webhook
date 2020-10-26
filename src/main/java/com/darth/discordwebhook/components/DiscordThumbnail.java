@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class DiscordThumbnail {
 
     @SerializedName("url")
-    private String url;
+    private final String url;
 
     @SerializedName("proxy_url")
-    private String proxyUrl;
+    private final String proxyUrl;
 
     @SerializedName("height")
-    private int height;
+    private final int height;
 
     @SerializedName("width")
-    private int width;
+    private final int width;
 
     public DiscordThumbnail(String iconUrl, String proxyUrl, int height, int width) {
         this.url = iconUrl;

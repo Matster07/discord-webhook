@@ -1,33 +1,56 @@
 package com.darth.discordwebhook;
 
-import com.darth.discordwebhook.components.DiscordFooter;
-import com.google.gson.Gson;
 import com.darth.discordwebhook.components.DiscordEmbed;
-import com.darth.discordwebhook.components.DiscordField;
-import com.darth.discordwebhook.components.DiscordThumbnail;
-import kong.unirest.Unirest;
+import com.google.gson.Gson;
+import okhttp3.*;
+
+import java.io.IOException;
 import java.util.List;
 
 public class DiscordWebhook {
 
-    private List<DiscordEmbed> embeds;
-    private DiscordFooter footer;
-    private List<DiscordField> fields;
-    private DiscordThumbnail thumbnail;
-    private String content;
-    private String username;
-    private String avatar_url;
+    private final String content;
+    private final String username;
+    private final String avatarUrl;
 
-    public DiscordWebhook(String content, String username, String avatar_url, List<DiscordEmbed> embeds, String webhookUrl) {
+    private final List<DiscordEmbed> embeds;
+
+    private final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+
+    public DiscordWebhook(String content, String username, String avatarUrl, List<DiscordEmbed> embeds) {
         this.content = content;
         this.username = username;
-        this.avatar_url = avatar_url;
+        this.avatarUrl = avatarUrl;
         this.embeds = embeds;
-        Gson gson = new Gson();
-        Unirest.post(webhookUrl)
-                .header("Content-Type", "application/json")
-                .body(gson.toJson(this))
-                .asEmpty();
     }
 
+    public Response execute(String webhookUrl) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = RequestBody.create(new Gson().toJson(this), JSON);
+
+        Request request = new Request.Builder()
+                .url(webhookUrl)
+                .post(body)
+                .build();
+
+
+        return client.newCall(request).execute();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public List<DiscordEmbed> getEmbeds() {
+        return embeds;
+    }
 }

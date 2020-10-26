@@ -6,13 +6,13 @@ public class DiscordFooter {
 
 
     @SerializedName("icon_url")
-    private String iconUrl;
+    private final String iconUrl;
 
     @SerializedName("text")
-    private String text;
+    private final String text;
 
     @SerializedName("proxy_icon_url")
-    private String proxyIconUrl;
+    private final String proxyIconUrl;
 
     public DiscordFooter(String iconUrl, String footerText, String proxyIconUrl) {
         this.iconUrl = iconUrl;
