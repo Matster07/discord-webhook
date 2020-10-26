@@ -5,7 +5,7 @@
 
     <groupId>com.darth</groupId>
     <artifactId>discord-webhook</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <name>discord-webhook</name>
