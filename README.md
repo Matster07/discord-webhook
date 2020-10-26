@@ -5,7 +5,7 @@
 <dependency>
             <groupId>com.github.DarthPresident</groupId>
             <artifactId>discord-webhook</artifactId>
-            <version>1.0.2</version>
+            <version>LATEST</version>
 </dependency>
 
 <repositories>
