@@ -18,8 +18,6 @@ public class DiscordWebhook {
 
     private final List<DiscordEmbed> embeds;
 
-    private final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-
     public DiscordWebhook(String content, String username, String avatarUrl, List<DiscordEmbed> embeds) {
         this.content = content;
         this.username = username;
@@ -29,6 +27,7 @@ public class DiscordWebhook {
 
     public Response execute(String webhookUrl) throws IOException {
         OkHttpClient client = new OkHttpClient();
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
         RequestBody body = RequestBody.create(new Gson().toJson(this), JSON);
 
