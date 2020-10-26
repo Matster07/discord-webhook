@@ -2,6 +2,7 @@ package com.darth.discordwebhook;
 
 import com.darth.discordwebhook.components.DiscordEmbed;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -11,6 +12,8 @@ public class DiscordWebhook {
 
     private final String content;
     private final String username;
+
+    @SerializedName("avatar_url")
     private final String avatarUrl;
 
     private final List<DiscordEmbed> embeds;
