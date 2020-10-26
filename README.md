@@ -115,8 +115,8 @@ public class Main {
                 "webhook content",
                 "webhook username",
                 "avatar url",
-                embeds,
-                "your webhook url");
-    }
+                embeds);
+        webhook.execute("your webhook url");
+     }
 }
 ```
